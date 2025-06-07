@@ -19,21 +19,21 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secretsDOCKER_USERNAME }}
+          password: ${{ secretsDOCKER_PASSWORD }}
 
       - name: Build dify-api
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/dify-api:latest ./api
+          docker build -t ${{ secretsDOCKER_USERNAME }}/dify-api:latest ./api
 
       - name: Build dify-web
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/dify-web:latest ./web
+          docker build -t ${{ secretsDOCKER_USERNAME }}/dify-web:latest ./web
 
       - name: Push dify-api
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/dify-api:latest
+          docker push ${{ secretsDOCKER_USERNAME }}/dify-api:latest
 
       - name: Push dify-web
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/dify-web:latest
+          docker push ${{ secretsDOCKER_USERNAME }}/dify-web:latest
